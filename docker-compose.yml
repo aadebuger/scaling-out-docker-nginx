@@ -1,22 +1,22 @@
 version: '3.2'
 services:
   backend1:
-      build: ./backend
+      image: basicexpress
       tty: true
       volumes:
-        - './backend/src:/backend-dir-inside-container'
+        - "./00-basic-express-generator/app:/src/app"
 
   backend2:
-      build: ./backend
+      image:  basicexpress 
       tty: true
       volumes:
-        - './backend/src:/backend-dir-inside-container'
+        - "./00-basic-express-generator/app:/src/app"
 
   backend3:
-      build: ./backend
+      image:   basicexpress
       tty: true
       volumes:
-        - './backend/src:/backend-dir-inside-container'
+        - "./00-basic-express-generator/app:/src/app"
 
   loadbalancer:
       build: ./load-balancer
@@ -26,7 +26,7 @@ services:
           - backend2
           - backend3
       ports:
-          - '8080:8080'
+          - '8089:8080'
 
 volumes:
   backend:
